@@ -1,0 +1,30 @@
+/* styles.css */
+
+body {
+  font-family: 'Sarabun', Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+.container {
+
+  font-size: 14px;
+}
+
+.book {
+  display: inline-block;
+  margin: 10px;
+  text-align: left;
+}
+.book img {
+  width: 150px;
+  height: 200px;
+}
+.category-filter {
+  border-right: 1px solid #ddd;
+}
+span.badge {
+  cursor: pointer;
+  font-size: 12px; /* Adjust the font size */
+  /*padding: 5px 10px; /* Adjust the padding */
+}
+
+/* Add any additional CSS rules for other elements as needed */
