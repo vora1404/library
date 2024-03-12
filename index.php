@@ -36,12 +36,14 @@ $result_books = $conn->query($sql_books);
 <html>
 <head>
     <title>Book Catalog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/libra/styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sarabun&display=swap">
-    
+    <link rel="stylesheet" href="/library/styles.css">
 </head>
+
 <body>
+<?php include 'navbar.php'; ?>
     <div class="container">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>
         <script>
@@ -49,12 +51,13 @@ $result_books = $conn->query($sql_books);
                 window.open(url, "_blank", "width=800,height=800");
             }
         </script>
-        <h1>Book Catalog</h1>
+        <h1></h1>
+        <br>
         <hr/>
         <div class="row">
        
             <div class="col-md-3 category-filter">
-                <h6>หมวดหนังสือ</h6>
+                <h6 style="color: #769DEA;">หมวดหนังสือ</h6>
           
                 <form method="POST" action="" id="myForm">
                     <?php
@@ -77,7 +80,7 @@ $result_books = $conn->query($sql_books);
                     }
                     ?>
                     </br>
-                    <button type="submit" class="btn btn-primary">Apply Filter</button>
+                    <button type="submit" class="btn btn-primary">ตกลง</button>
                 </form>
             </div>
 
@@ -105,7 +108,7 @@ $result_books = $conn->query($sql_books);
                                 echo '</div><div class="row book-container">';
                             }
                             echo '<div class="book col-md-2">';
-                            echo '<img src="/libra/cover.jpg" alt="Description of the image" style="width: 120px; height: 150px;">';
+                            echo '<img src="/library/cover.jpg" alt="Description of the image" style="width: 120px; height: 150px;">';
                             echo '<p style="text-align: left; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 120px;" title="' . $row_book["title"] . '">' . $row_book["title"] . '</p>';
 
                             echo '<p style="text-align: left;"></p>';

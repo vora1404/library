@@ -4,6 +4,14 @@ body {
   font-family: 'Sarabun', Arial, Helvetica, sans-serif;
   font-size: 14px;
 }
+.custom-navbar {
+  padding: 10px 20px; /* Adjust padding to increase or decrease the size of the navbar */
+  height: 60px; /* Adjust height to increase or decrease the size of the navbar */
+}
+
+.custom-navbar a {
+  font-size: 10px; /* Adjust font size to increase or decrease the size of the links within the navbar */
+}
 .container {
 
   font-size: 14px;
@@ -26,5 +34,6 @@ span.badge {
   font-size: 12px; /* Adjust the font size */
   /*padding: 5px 10px; /* Adjust the padding */
 }
+
 
 /* Add any additional CSS rules for other elements as needed */

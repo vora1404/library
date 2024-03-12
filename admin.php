@@ -1,5 +1,38 @@
 <?php
+$sessionTimeout = 3600;
 
+// Set the session.gc_maxlifetime configuration option
+ini_set('session.gc_maxlifetime', $sessionTimeout);
+
+// Set the session cookie lifetime
+session_set_cookie_params($sessionTimeout);
+
+// Start the session
+session_start();
+
+// Check the last activity time in the session
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > $sessionTimeout)) {
+    // Session has been inactive for too long, destroy it and redirect to login
+    session_unset();
+    session_destroy();
+    header("Location: login.php");
+    exit();
+}
+
+// Update the last activity time in the session on every request
+$_SESSION['LAST_ACTIVITY'] = time();
+
+// Check if the user is logged in
+if (!isset($_SESSION["user_id"])) {
+    // User is not logged in, redirect to the login page
+    header("Location: login.php");
+    exit();
+}
+
+// Access the user's information from the session
+$userID = $_SESSION["user_id"];
+$username = $_SESSION["username"];
+$userRole = $_SESSION["user_role"];
 
 // การเชื่อมต่อฐานข้อมูล MySQL
 require_once "connect.php";
@@ -109,7 +142,7 @@ require_once "connect.php";
 
 
         <div class="container"> 
-            
+            <h1>รายการจองยืมหนังสือ</h1>
             <br/>
             <hr>
             <table id="myTable" class="table table-striped table-bordered">
