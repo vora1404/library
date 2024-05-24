@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     showConfirmButton: false,
                     timer: 5000
                 }).then(function () {
-                    window.location.href = 'admin.php';
+                    window.location.href = 'admin_booking.php';
                 });
             </script>
             <?php
@@ -70,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <form method="POST" action="">
             <div class="form-group">
                 <label for="username">Username:</label>
-                <input type="text" class="form-control" id="username" name="username" placeholder='เลขรับเงินเดือน' required>
+                <input type="text" class="form-control" id="username" name="username" placeholder='' required>
             </div>
             <div class="form-group">
                 <label for="password">Password:</label>

@@ -41,8 +41,8 @@ require_once "connect.php";
 
 
 
-    $sql = "SELECT * FROM reserve_book rb 
-    left join book_info b on rb.book_id = b.id";
+    $sql = "SELECT b.id as id,author,c.category,b.book_status,cover,title FROM book_info b 
+    left join category c on b.category_id = c.id";
     $result = $conn->query($sql);   
     if (!$result) {
         die("Query failed: " . $conn->error);
@@ -142,7 +142,7 @@ require_once "connect.php";
 
 
         <div class="container"> 
-            <h1>รายการจองยืมหนังสือ</h1>
+            <h1>รายการหนังสือ</h1>
             <br/>
             <hr>
             <table id="myTable" class="table table-striped table-bordered">
@@ -151,10 +151,10 @@ require_once "connect.php";
 
                         <th>รายการ</th>
                         <th>หนังสือ</th>
-                        <th>ผู้จอง</th>
-                        <th>เบอร์ติดต่อ</th>
-                        <th>วันที่จอง</th>
-                        <th>approve</th> 
+                        <th>ประเภท</th>
+                        <th>รูป</th>
+                        <th>แก้ไข</th>
+ 
 
                     </tr>
                 </thead>
@@ -167,20 +167,10 @@ require_once "connect.php";
                     <tr>
                         <td><?php echo $rowcount; ?></td>
                         <td><?php echo $row["title"]; ?></td> 
-                        <td><?php echo $row["reserve_name"]; ?></td>
-                        <td><?php echo $row["reserve_phone"]; ?></td>  
-                        <td><?php echo $row["reserve_date"]; ?></td>
-                        <td>
-                            <?php
-                            if ($row["book_status"] === "01") {
-                                echo '<span class="badge badge-danger" onclick="openPopup(\'managebook.php?id=' . $row['reserve_id'] . '\');">' . 'รออนุมัติ' . '</span>';
-                            } else if ($row["book_status"] === "02") {
-                                echo '<span class="badge badge-warning" onclick="openPopup(\'managebook.php?id=' . $row['reserve_id'] . '\');">' . 'อยู่ระหว่างการยืม' . '</span>';
-                            } else {
-                                echo '<span class="badge badge-success" onclick="openPopup(\'managebook.php?id=' . $row['reserve_id'] . '\');">' . 'คืนแล้ว' . '</span>';
-                            }
-                            ?>
-                        </td>
+                        <td><?php echo $row["category"]; ?></td> 
+                        <td><img src="data:image/jpeg;base64,<?php echo base64_encode($row["cover"]); ?>" width="100"></td>
+                        <td><button type="button" class="btn btn-primary btn-sm " onclick="openPopup('manage.php?id=<?php echo $row['id']; ?>')"> แก้ไข</td>
+            
                     </tr>
                 <?php
                 $rowcount++;

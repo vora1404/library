@@ -86,8 +86,8 @@
 <body>
     <div class="container">
     <div class="card">
-        <div class="card-header">
-            <h2>จองหนังสือ <?php echo  $row['title']; ?></h2>
+        <div class="card-header" style="background-color: #9acd32; color:white;">
+            <h5 >จองหนังสือ <?php echo  $row['title']; ?></h5>
         </div>
         <div class="card-body">
         <form method="POST" action="managereserves.php">
@@ -109,7 +109,7 @@
             </div>
 
             <div class="form-group">
-                <label for="start"><b>ยืมวันที่: </b></label>
+                <label for="start"><b>ต้องการยืมวันที่: </b></label>
                 <div class="form-group">
                     <input type="date" class="form-control" id="datepicker" name="cdate" required>
                 </div>
